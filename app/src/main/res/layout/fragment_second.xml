@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.SecondFragment" >
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Second Fragment"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btnThird"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="選手一覧（To Third Fragment ）" />
+
+    <Button
+        android:id="@+id/buttonTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="チーム名一覧" />
+
+    <Button
+        android:id="@+id/buttonPlayerAndTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="選手名／身長／チーム名" />
+
+    <TextView
+        android:id="@+id/txtTeams"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="23sp"
+        android:textSize="20sp" />
+
+</LinearLayout>
