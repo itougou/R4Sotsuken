@@ -1,14 +1,10 @@
 package com.example.r4sotuskenfragmentsample1025.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.r4sotuskenfragmentsample1025.BR;
-import com.example.r4sotuskenfragmentsample1025.R;
-import com.example.r4sotuskenfragmentsample1025.databinding.FragmentThirdBinding;
 import com.example.r4sotuskenfragmentsample1025.databinding.PlayerItemViewBinding;
 import com.example.r4sotuskenfragmentsample1025.entity.Player;
 import com.example.r4sotuskenfragmentsample1025.entity.PlayerAndTeam;

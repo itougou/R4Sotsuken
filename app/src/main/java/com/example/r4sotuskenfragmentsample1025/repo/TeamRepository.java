@@ -34,15 +34,19 @@ public class TeamRepository {
         Log.d("★TeamRepository","getAllTeams()の中でmAllTeamsを返却");
         return mAllTeams;
     }
-
     //チーム１件追加メソッド 2022.11.1
     public void insertTeam( Team team ){
         //INSERT文は、普通に実行するとエラーになるので、別スレッドで実行
         new Thread(new Runnable() {
             @Override
             public void run() {
+                Log.d("★TeamRepository","insertTeam()->run()");
+
+                BaseballRoomDatabase db = BaseballRoomDatabase.getDatabase(mAapplication);
+                mAllTeams = db.TeamDao().getAlphabetizedTeam();
                 mTeamDao.insertTeam( team );
                 Log.d("★TeamRepository","insertTeam()->run()-> insertTeam()");
+                //callback.onComplete(maxId);
             }
         }).start();
     }

@@ -6,10 +6,8 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 
 import com.example.r4sotuskenfragmentsample1025.dao.PlayerAndTeamDao;
-import com.example.r4sotuskenfragmentsample1025.dao.TeamDao;
 import com.example.r4sotuskenfragmentsample1025.database.BaseballRoomDatabase;
 import com.example.r4sotuskenfragmentsample1025.entity.PlayerAndTeam;
-import com.example.r4sotuskenfragmentsample1025.entity.Team;
 
 import java.util.List;
 

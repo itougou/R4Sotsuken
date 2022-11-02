@@ -7,15 +7,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
-import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.r4sotuskenfragmentsample1025.BR;
-import com.example.r4sotuskenfragmentsample1025.databinding.PlayerItemViewBinding;
 import com.example.r4sotuskenfragmentsample1025.databinding.TeamIemViewBinding;
-import com.example.r4sotuskenfragmentsample1025.entity.Player;
 import com.example.r4sotuskenfragmentsample1025.entity.PlayerAndTeam;
 import com.example.r4sotuskenfragmentsample1025.entity.Team;
 import com.example.r4sotuskenfragmentsample1025.view.TeamListFragment;

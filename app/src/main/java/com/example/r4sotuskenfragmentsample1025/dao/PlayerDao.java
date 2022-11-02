@@ -5,7 +5,6 @@ import androidx.room.Dao;
 import androidx.room.Query;
 
 import com.example.r4sotuskenfragmentsample1025.entity.Player;
-import com.example.r4sotuskenfragmentsample1025.entity.Team;
 
 import java.util.List;
 @Dao

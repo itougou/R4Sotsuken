@@ -82,4 +82,23 @@ public class BaseballViewModel  extends AndroidViewModel {
         mRepository.insertTeam(team);
         mutableTeam.setValue(team);
     }
+    //2022.11.06
+    public void putTeam(Team team){
+        mutableTeam.setValue(team);
+        Log.d("★TeamEditFragment","putTeam() mutableTeam:"+mutableTeam.getValue().getName());
+    }
+    //2022.11.06
+    public void updateTeam( String teamName ){
+
+        Log.d("★TeamEditFragment","updateTeam() mutableTeam:"+mutableTeam.getValue());
+        mutableTeam.getValue().setName(teamName);
+        mRepository.updateTeam( mutableTeam.getValue() );
+        //mutableTeam.setValue(team);
+
+    }
+    //2022.11.06
+    public Team getTeam(){
+        Log.d("★TeamEditFragment","getTeam() mutableTeam.getValue():"+mutableTeam.getValue());
+        return mutableTeam.getValue();
+    }
 }

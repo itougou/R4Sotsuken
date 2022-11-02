@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_teamListFragment_to_addTeamFragment"
             app:destination="@id/addTeamFragment" />
+        <action
+            android:id="@+id/action_teamListFragment_to_teamEditFragment"
+            app:destination="@id/teamEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTeamFragment"
@@ -59,6 +62,14 @@
         tools:layout="@layout/fragment_add_team" >
         <action
             android:id="@+id/action_addTeamFragment_to_teamListFragment"
+            app:destination="@id/teamListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamEditFragment"
+        android:name="com.example.r4sotuskenfragmentsample1025.view.TeamEditFragment"
+        android:label="TeamEditFragment" >
+        <action
+            android:id="@+id/action_teamEditFragment_to_teamListFragment"
             app:destination="@id/teamListFragment" />
     </fragment>
 </navigation>

@@ -19,25 +19,30 @@
         android:id="@+id/btnThird"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="選手一覧（To Third Fragment ）" />
-
-    <Button
-        android:id="@+id/buttonTeam"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="チーム名一覧" />
-
-    <Button
-        android:id="@+id/buttonPlayerAndTeam"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="選手名／身長／チーム名" />
+        android:backgroundTint="#6200EA"
+        android:padding="15dp"
+        android:text="選手一覧（Third Fragment へ表示 ）" />
 
     <Button
         android:id="@+id/buttonTeam2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="チーム名（別Fragmentへ表示）" />
+        android:padding="15dp"
+        android:text="チーム名（TeamListFragmentへ表示）" />
+
+    <Button
+        android:id="@+id/buttonTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#7C7C7C"
+        android:text="チーム名一覧（おまけ）" />
+
+    <Button
+        android:id="@+id/buttonPlayerAndTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#7C7C7C"
+        android:text="選手名／身長／チーム名（おまけ）" />
 
     <TextView
         android:id="@+id/txtTeams"

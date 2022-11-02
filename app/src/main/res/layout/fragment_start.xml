@@ -19,6 +19,7 @@
         android:id="@+id/btnSecond"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ログイン（To Second Fragment ）" />
+        android:padding="15dp"
+        android:text="ログイン（Second Fragment  へ遷移）" />
 
 </LinearLayout>

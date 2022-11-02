@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -19,9 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.r4sotuskenfragmentsample1025.R;
 import com.example.r4sotuskenfragmentsample1025.adapter.ItemAdapter;
-import com.example.r4sotuskenfragmentsample1025.databinding.FragmentSecondBinding;
 import com.example.r4sotuskenfragmentsample1025.databinding.FragmentThirdBinding;
-import com.example.r4sotuskenfragmentsample1025.entity.Player;
 import com.example.r4sotuskenfragmentsample1025.entity.PlayerAndTeam;
 import com.example.r4sotuskenfragmentsample1025.viewmodel.BaseballViewModel;
 

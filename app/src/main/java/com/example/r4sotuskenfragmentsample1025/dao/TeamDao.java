@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.r4sotuskenfragmentsample1025.entity.Team;
 
@@ -16,5 +17,8 @@ public interface TeamDao {
 
     @Insert
     public void insertTeam(Team team);
+
+    @Update
+    public void updateTeam(Team team);
 }
 

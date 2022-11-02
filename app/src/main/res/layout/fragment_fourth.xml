@@ -34,8 +34,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="250dp"
-                android:layout_height="333.3333dp"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:playerImage="@{baseballViewModel.playerAndTeam.player.face_url}" />
 
