@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_secondFragment_to_thirdFragment"
             app:destination="@id/thirdFragment" />
+        <action
+            android:id="@+id/action_secondFragment_to_teamListFragment"
+            app:destination="@id/teamListFragment" />
     </fragment>
     <fragment
         android:id="@+id/thirdFragment"
@@ -37,4 +40,25 @@
         android:name="com.example.r4sotuskenfragmentsample1025.view.FourthFragment"
         android:label="fragment_fourth"
         tools:layout="@layout/fragment_fourth" />
+    <fragment
+        android:id="@+id/teamListFragment"
+        android:name="com.example.r4sotuskenfragmentsample1025.view.TeamListFragment"
+        android:label="fragment_team_list"
+        tools:layout="@layout/fragment_team_list" >
+        <action
+            android:id="@+id/action_teamListFragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
+        <action
+            android:id="@+id/action_teamListFragment_to_addTeamFragment"
+            app:destination="@id/addTeamFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTeamFragment"
+        android:name="com.example.r4sotuskenfragmentsample1025.view.AddTeamFragment"
+        android:label="fragment_add_team"
+        tools:layout="@layout/fragment_add_team" >
+        <action
+            android:id="@+id/action_addTeamFragment_to_teamListFragment"
+            app:destination="@id/teamListFragment" />
+    </fragment>
 </navigation>
