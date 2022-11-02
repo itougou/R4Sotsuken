@@ -74,8 +74,8 @@ public class ThirdFragment extends Fragment implements ItemAdapter.PlayerInterfa
 
         //LayoutManagerの設定
         RecyclerView.LayoutManager mLayoutManager;
-        mLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(mLayoutManager);
+        mLayoutManager = new LinearLayoutManager( getActivity() );
+        recyclerView.setLayoutManager( mLayoutManager );
 
         //2022.10.28
         // String dat[]=new String[100];
@@ -88,10 +88,14 @@ public class ThirdFragment extends Fragment implements ItemAdapter.PlayerInterfa
         ItemAdapter adapter = new ItemAdapter (this);
         fragmentThirdBinding.rvPlayer.setAdapter(adapter);
 
+        //ビュー・モデル取得
         mBaseballViewModel = new ViewModelProvider(requireActivity()).get(BaseballViewModel.class);
+        //ビュー・モデルのgetAllメソッド呼び出しと、
+        // getAllで取り出す値（List<PlayerAndTeam>）が変化したときのコールバック処理（onChanged）登録
         mBaseballViewModel.getAll().observe(getViewLifecycleOwner(), new Observer<List<PlayerAndTeam>>() {
             @Override
             public void onChanged(List<PlayerAndTeam> playerAndTeam) {
+                //変化後の結果をItemAdapterに渡し選手一覧画面へ反映してもらう
                 adapter.submitList(playerAndTeam);
             }
         });

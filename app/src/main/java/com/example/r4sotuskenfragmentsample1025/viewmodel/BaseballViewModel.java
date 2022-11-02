@@ -37,6 +37,7 @@ public class BaseballViewModel  extends AndroidViewModel {
 
     //MutableData
     MutableLiveData<PlayerAndTeam> mutablePlayer = new MutableLiveData<>(); //選手詳細情報画面（FourthFragment)表示で使用
+    MutableLiveData<Team> mutableTeam = new MutableLiveData<>(); //ﾁｰﾑ一覧画面（TeaListFragment)表示で使用
 
     //2022.10.24 ito
     //public LiveData<String> mSearchedData;
@@ -75,5 +76,10 @@ public class BaseballViewModel  extends AndroidViewModel {
     }
     public PlayerAndTeam getPlayerAndTeam(){
         return mutablePlayer.getValue();
+    }
+    //2022.11.1 ito
+    public void setTeam(Team team){
+        mRepository.insertTeam(team);
+        mutableTeam.setValue(team);
     }
 }

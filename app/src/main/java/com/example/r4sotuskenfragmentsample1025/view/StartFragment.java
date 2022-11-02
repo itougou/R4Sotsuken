@@ -53,8 +53,9 @@ public class StartFragment extends Fragment {
         // ボタン要素を取得
         //Button bt1 = view.findViewById(R.id.btnSecond);
         // ボタンクリックリスナー設定
-       // bt1.setOnClickListener(new View.OnClickListener() {
+        // bt1.setOnClickListener(new View.OnClickListener() {
 
+        //「ログイン」ボタンクリックイベントハンドラー登録
         binding.btnSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

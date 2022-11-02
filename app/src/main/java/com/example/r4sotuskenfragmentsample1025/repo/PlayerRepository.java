@@ -19,15 +19,16 @@ public class PlayerRepository {
     private PlayerDao mPlayerDao;
 
     public PlayerRepository(Application application) {
+        //DBクラスのインスタンス取得
         BaseballRoomDatabase db = BaseballRoomDatabase.getDatabase(application);
-        mPlayerDao = db.PlayerDao();
-        this.mAllPlayers = mPlayerDao.getAlphabetizedPlayer();
-        Log.d("★PlayerRepository","PlayerRepository() mPlayerDao.getAlphabetizedPlayer()呼び出し ﾌｨｰﾙﾄﾞmAllPlayersへ格納:"+mAllPlayers.getValue());
 
-        //this.mAllTeams = mAllTeams;
+        mPlayerDao = db.PlayerDao();    //DAO取得
+        this.mAllPlayers = mPlayerDao.getAlphabetizedPlayer();  //全選手情報取得
+        Log.d("★PlayerRepository","PlayerRepository() mPlayerDao.getAlphabetizedPlayer()呼び出し ﾌｨｰﾙﾄﾞmAllPlayersへ格納:"+mAllPlayers.getValue());
     }
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
+    // 全選手情報取り出し用メソッド
     public LiveData<List<Player>> getAllPlayers() {
         Log.d("★PlayerRepository","getAllPlayerms()の中でmAllPlayersを返却");
         return mAllPlayers;

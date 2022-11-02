@@ -133,6 +133,16 @@ public class SecondFragment extends Fragment {
             }
         });
 
+        //チーム一覧ボタンクリックイベントハンドラー登録
+        binding.buttonTeam2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Team List Fragmentへ遷移させる
+                Log.d("★SecondFragment","onClick() To Team List Fragment");
+                navController.navigate(R.id.action_secondFragment_to_teamListFragment);
+            }
+        });
+
         //2022.10.28 ito
         //現在未使用？
         mBaseballViewModel.getAllPlayers( ).observe(getViewLifecycleOwner(), new Observer<List<Player>>() {
