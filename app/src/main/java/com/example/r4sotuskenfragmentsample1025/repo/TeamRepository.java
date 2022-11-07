@@ -47,7 +47,7 @@ public class TeamRepository {
     }
     //チーム１件追加メソッド 2022.11.1
     public void updateTeam( Team team ){
-        //INSERT文は、普通に実行するとエラーになるので、別スレッドで実行
+        //Update文は、普通に実行するとエラーになるので、別スレッドで実行
         new Thread(new Runnable() {
             @Override
             public void run() {
