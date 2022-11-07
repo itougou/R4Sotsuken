@@ -59,7 +59,7 @@ public class TeamEditFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                //ビュー・モデルのsetTeamメソッド呼び出し
+                //ビュー・モデルのupdateTeamメソッド呼び出し
                 mBaseballViewModel.updateTeam( fragmentTeamEditBinding.edtTeamName.getText().toString());
 
                 Log.d("★TeamEditFragment","btnExecUpdate onClick()");

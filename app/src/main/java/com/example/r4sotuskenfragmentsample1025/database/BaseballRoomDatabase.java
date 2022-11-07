@@ -57,7 +57,7 @@ abstract public class BaseballRoomDatabase  extends RoomDatabase {
      * For this sample, we clear the database every time it is created.
      * 現在未使用
      */
-    private static Callback sRoomDatabaseCallback = new Callback() {
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);

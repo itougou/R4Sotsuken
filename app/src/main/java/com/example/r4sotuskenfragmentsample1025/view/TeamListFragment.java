@@ -106,7 +106,7 @@ public class TeamListFragment extends Fragment implements TeamAdapter.TeamInterf
     @Override
     public void onItemClick(Team Team) {
         Log.i("★TeamListFragment","onItemClick() Team:"+Team.getName());
-        mBaseballViewModel.putTeam(Team);
+        mBaseballViewModel.setTeam(Team);
         navController.navigate(R.id.action_teamListFragment_to_teamEditFragment);
     }
 

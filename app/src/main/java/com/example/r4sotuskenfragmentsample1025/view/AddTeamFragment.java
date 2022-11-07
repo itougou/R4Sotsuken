@@ -61,8 +61,8 @@ public class AddTeamFragment extends Fragment {
             public void onClick(View view) {
                 //画面入力したID,チーム名を元にTeamｲﾝｽﾀﾝｽ生成
                 Team team = new Team(fragmentAddTeamBinding.edtTeamId.getText().toString(),fragmentAddTeamBinding.edtTeamName.getText().toString());
-                //ビュー・モデルのsetTeamメソッド呼び出し
-                mBaseballViewModel.setTeam(team);
+                //ビュー・モデルのaddTeamメソッド呼び出し
+                mBaseballViewModel.addTeam(team);
 
                 Log.d("★AddTeamFragment","btnExecAdd onClick()");
                 //チーム一覧画面Fragmentへ遷移

@@ -55,7 +55,6 @@ public class BaseballViewModel  extends AndroidViewModel {
         this.mRepository3 = new PlayerRepository(application);
         Log.d("★BaseballViewModel","BaseballViewModel() mRepository3.getAllPlayers()呼び出し");
         mAllPlayers = mRepository3.getAllPlayers();
-
     }
 
     public LiveData<List<Team>> getAllTeams() {
@@ -78,14 +77,14 @@ public class BaseballViewModel  extends AndroidViewModel {
         return mutablePlayer.getValue();
     }
     //2022.11.1 ito
-    public void setTeam(Team team){
+    public void addTeam(Team team){
         mRepository.insertTeam(team);
         mutableTeam.setValue(team);
     }
     //2022.11.06
-    public void putTeam(Team team){
+    public void setTeam(Team team){
         mutableTeam.setValue(team);
-        Log.d("★TeamEditFragment","putTeam() mutableTeam:"+mutableTeam.getValue().getName());
+        Log.d("★TeamEditFragment","setTeam() mutableTeam:"+mutableTeam.getValue().getName());
     }
     //2022.11.06
     public void updateTeam( String teamName ){
@@ -93,8 +92,6 @@ public class BaseballViewModel  extends AndroidViewModel {
         Log.d("★TeamEditFragment","updateTeam() mutableTeam:"+mutableTeam.getValue());
         mutableTeam.getValue().setName(teamName);
         mRepository.updateTeam( mutableTeam.getValue() );
-        //mutableTeam.setValue(team);
-
     }
     //2022.11.06
     public Team getTeam(){
