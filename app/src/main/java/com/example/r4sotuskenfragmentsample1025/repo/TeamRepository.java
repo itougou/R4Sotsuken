@@ -10,7 +10,6 @@ import com.example.r4sotuskenfragmentsample1025.database.BaseballRoomDatabase;
 import com.example.r4sotuskenfragmentsample1025.entity.Team;
 
 import java.util.List;
-import java.util.Random;
 
 public class TeamRepository {
     private LiveData<List<Team>> mAllTeams;
@@ -43,6 +42,17 @@ public class TeamRepository {
             public void run() {
                 mTeamDao.insertTeam( team );
                 Log.d("★TeamRepository","insertTeam()->run()-> insertTeam()");
+            }
+        }).start();
+    }
+    //チーム１件追加メソッド 2022.11.1
+    public void updateTeam( Team team ){
+        //INSERT文は、普通に実行するとエラーになるので、別スレッドで実行
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mTeamDao.updateTeam( team );
+                Log.d("★TeamRepository","updateTeam()->run()-> updateTeam() team:"+team.getName() );
             }
         }).start();
     }
