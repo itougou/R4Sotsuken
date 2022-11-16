@@ -1,5 +1,6 @@
 package com.example.r4sotuskenfragmentsample1025.view;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,14 +17,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.r4sotuskenfragmentsample1025.R;
-import com.example.r4sotuskenfragmentsample1025.adapter.ItemAdapter;
 import com.example.r4sotuskenfragmentsample1025.adapter.TeamAdapter;
-import com.example.r4sotuskenfragmentsample1025.databinding.FragmentStartBinding;
 import com.example.r4sotuskenfragmentsample1025.databinding.FragmentTeamListBinding;
-import com.example.r4sotuskenfragmentsample1025.databinding.FragmentThirdBinding;
-import com.example.r4sotuskenfragmentsample1025.entity.PlayerAndTeam;
 import com.example.r4sotuskenfragmentsample1025.entity.Team;
 import com.example.r4sotuskenfragmentsample1025.viewmodel.BaseballViewModel;
 
@@ -43,6 +42,8 @@ public class TeamListFragment extends Fragment implements TeamAdapter.TeamInterf
     //2022.10.27 ito
     private FragmentTeamListBinding fragmentTeamListBinding;
 
+    //2022.11.15 ito
+    private View t_f_view;
 
     public TeamListFragment() {
         // Required empty public constructor
@@ -60,7 +61,9 @@ public class TeamListFragment extends Fragment implements TeamAdapter.TeamInterf
         mBaseballViewModel = new ViewModelProvider(this).get(BaseballViewModel.class);
 
         fragmentTeamListBinding = FragmentTeamListBinding.inflate(inflater,container,false);
-        View t_f_view = fragmentTeamListBinding.getRoot();
+
+        //View t_f_view = fragmentTeamListBinding.getRoot();
+        t_f_view = fragmentTeamListBinding.getRoot();
 
         //RecyclerViewの取得
         RecyclerView recyclerView = fragmentTeamListBinding.rvTeams;
@@ -104,9 +107,14 @@ public class TeamListFragment extends Fragment implements TeamAdapter.TeamInterf
 
     }
     @Override
-    public void onItemClick(Team Team) {
-        Log.i("★TeamListFragment","onItemClick() Team:"+Team.getName());
-        mBaseballViewModel.setTeam(Team);
+    //このメソッドはteam_iem_view.xmlから直接ラムダ式で呼び出している
+    // android:onClick="@{() -> teamInterface.onItemClick(Team)}"
+    // ラムダ式で実装できるのは、関数型インターフェイスのメソッドのみ
+    // 本TeamListFragentｸﾗｽは teamInterfaceｲﾝﾀｰﾌｪｰｽ（TeamListAdapterｸﾗｽ内に定義）
+    // を実装したｸﾗｽであるため実装したﾒｿｯﾄﾞをXMLからﾗﾑﾀﾞ式で呼び出せる。
+    public void onItemClick(Team team) {
+        Log.i("★TeamListFragment","onItemClick() Team:"+team.getName());
+        mBaseballViewModel.setTeam(team);
         navController.navigate(R.id.action_teamListFragment_to_teamEditFragment);
     }
 
@@ -115,6 +123,20 @@ public class TeamListFragment extends Fragment implements TeamAdapter.TeamInterf
         super.onViewCreated(view, savedInstanceState);
 
         navController = Navigation.findNavController(view);
+    }
+
+    //2022.11.15 ito
+    @Override
+    public void onUpdateWins( Team team ){
+
+        Log.i("★TeamListFragment","onUpdateWins() Team mae:"+team.getName()+",Team.win:"+team.getWin());
+        mBaseballViewModel.setTeam(team);
+        mBaseballViewModel.updateTeamWin(team);
+
+        Toast.makeText(getActivity(), "チーム情報DBを更新しました", Toast.LENGTH_SHORT).show();
+
+        Log.i("★TeamListFragment","onUpdateWins() Team ato:"+team.getName()+",Team.win:"+team.getWin());
+
     }
 
 }

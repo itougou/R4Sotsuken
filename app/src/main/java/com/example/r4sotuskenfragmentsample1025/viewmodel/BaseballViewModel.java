@@ -23,6 +23,7 @@ public class BaseballViewModel  extends AndroidViewModel {
     private PlayerAndTeamRepository mRepository2;
     private PlayerRepository mRepository3;
 
+
     // Using LiveData and caching what getAlphabetizedWords returns has several benefits:
     // - We can put an observer on the data (instead of polling for changes) and only update the
     //   the UI when the data actually changes.
@@ -91,6 +92,16 @@ public class BaseballViewModel  extends AndroidViewModel {
         Log.d("★TeamEditFragment","updateTeam() mutableTeam:"+mutableTeam.getValue());
         mutableTeam.getValue().setName(teamName);
         mRepository.updateTeam( mutableTeam.getValue() );
+    }
+    //2022.11.15
+    public void updateTeamWin( Team team ){
+        Log.d("★TeamEditFragment","updateTeamWin() mTeam id:"+team.getId());
+        Log.d("★TeamEditFragment","updateTeamWin() mTeam name:"+team.getName());
+        Log.d("★TeamEditFragment","updateTeamWin() mTeam win:"+team.getWin());
+
+        mutableTeam.getValue().setWin(team.getWin());
+        mRepository.updateTeam( mutableTeam.getValue() );
+        Log.d("★TeamEditFragment","updateTeamWin() mutableTeam:"+mutableTeam.getValue());
     }
     //2022.11.06
     public Team getTeam(){

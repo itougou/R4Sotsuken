@@ -62,7 +62,7 @@ public class SecondFragment extends Fragment {
         binding = FragmentSecondBinding.inflate(inflater,container,false);
         View s_f_view = binding.getRoot();
 
-        //  ThirdFragmentへ画面遷移　（TO THIRD FRAGMENT ボタンクリック時）
+        //  ThirdFragmentへ画面遷移　（選手一覧 THIRD FRAGMENT ボタンクリック時）
         // ボタン要素を取得
         //Button bt1 = s_f_view.findViewById(R.id.btnThird);
         // ボタンクリックリスナー設定
@@ -76,7 +76,17 @@ public class SecondFragment extends Fragment {
             }
         });
 
-        //  チーム名一覧表示　（SHOW TEAMS ボタンクリック時）
+        //チーム名（TEAMLISTFLAGENTへ表示）ボタンクリックイベントハンドラー登録
+        binding.buttonTeam2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Team List Fragmentへ遷移させる
+                Log.d("★SecondFragment","onClick() To Team List Fragment");
+                navController.navigate(R.id.action_secondFragment_to_teamListFragment);
+            }
+        });
+
+        //  チーム名一覧表示（ おまけ ）ボタンクリック時
         binding.buttonTeam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +109,7 @@ public class SecondFragment extends Fragment {
         });
 
 
-        //  選手名＋チーム名一覧表示　（SHOW PLAYER AND TEAM ボタンクリック時）
+        //  選手名／身長／チーム名（おまけ） ボタンクリック時
         //Button bt3 = s_f_view.findViewById(R.id.buttonPlayerAndTeam);
         // ボタンクリックリスナー設定
         //bt3.setOnClickListener(new View.OnClickListener() {
@@ -126,16 +136,6 @@ public class SecondFragment extends Fragment {
                 //
                 Log.d("★SecondFragment","onClick()buttonPlayerAndTeam end");
 
-            }
-        });
-
-        //チーム一覧ボタンクリックイベントハンドラー登録
-        binding.buttonTeam2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Team List Fragmentへ遷移させる
-                Log.d("★SecondFragment","onClick() To Team List Fragment");
-                navController.navigate(R.id.action_secondFragment_to_teamListFragment);
             }
         });
 

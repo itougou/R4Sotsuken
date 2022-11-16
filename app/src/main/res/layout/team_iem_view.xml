@@ -20,11 +20,49 @@
             android:id="@+id/txtTeamName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:text="@{Team.name}"
+            android:layout_weight="0.5"
             android:onClick="@{() -> teamInterface.onItemClick(Team)}"
-            android:textSize="24sp" />
+            android:text="@{Team.name}"
+            android:textSize="20sp" />
 
+        <EditText
+            android:id="@+id/editTextNumberDecimal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:inputType="numberDecimal"
+            android:text="@{String.valueOf(Team.win)}"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="勝"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnWinUpdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="★" />
+
+        <Button
+            android:id="@+id/btnWinAdd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:backgroundTint="#FF695E"
+            android:text="＋" />
+
+        <Button
+            android:id="@+id/btnWinDecrese"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:backgroundTint="#74C2FF"
+            android:text="―" />
     </LinearLayout>
 
 </layout>

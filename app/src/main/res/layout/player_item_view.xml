@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
             android:text="@{playerAndTeam.player.id}"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txtPlayer"
@@ -31,7 +31,7 @@
             android:layout_weight="0.8"
             android:onClick="@{() -> playerInterface.onItemClick(playerAndTeam)}"
             android:text="@{playerAndTeam.player.name}"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 

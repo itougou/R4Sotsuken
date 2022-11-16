@@ -44,11 +44,16 @@
         android:backgroundTint="#7C7C7C"
         android:text="選手名／身長／チーム名（おまけ）" />
 
-    <TextView
-        android:id="@+id/txtTeams"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="23sp"
-        android:textSize="20sp" />
+        android:layout_height="match_parent"
+        tools:context=".view.FourthFragment">
+        <TextView
+            android:id="@+id/txtTeams"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="23sp"
+            android:textSize="20sp" />
+    </ScrollView>
 
 </LinearLayout>

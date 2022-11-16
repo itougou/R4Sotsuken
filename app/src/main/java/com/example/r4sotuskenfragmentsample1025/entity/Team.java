@@ -17,6 +17,16 @@ public class Team {
     @ColumnInfo(name = "name")
     private String name;
 
+    //@ColumnInfo(name = "win" , defaultValue = "0")
+    @ColumnInfo(name = "win" )
+    @NonNull
+    private int win;
+
+    //@ColumnInfo(name = "losing" , defaultValue = "0")
+    @ColumnInfo(name = "losing" )
+    @NonNull
+    private int losing;
+
     @NonNull
     public String getId() {
         return this.id;
@@ -33,6 +43,17 @@ public class Team {
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getWin() {  return win;   }
+
+    public void setWin(@NonNull int win) { this.win = win;  }
+
+    public int getLosing() { return losing; }
+
+    public void setLosing(@NonNull int losing) {
+        this.losing = losing;
+    }
+
 
     //2022.11.1
     public Team(@NonNull String id, String name) {
