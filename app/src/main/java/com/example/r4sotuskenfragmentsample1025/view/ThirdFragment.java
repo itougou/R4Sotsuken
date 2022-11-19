@@ -29,15 +29,10 @@ import java.util.List;
  */
 public class ThirdFragment extends Fragment implements ItemAdapter.PlayerInterface{
 
-    //2022.10.29 ito
     private NavController navController;
-
-    //2022.10.24 ito
     private BaseballViewModel mBaseballViewModel;
-
-    //2022.10.27 ito
     private FragmentThirdBinding fragmentThirdBinding;
-
+    private ItemAdapter adapter;
 
     public ThirdFragment() {
         // Required empty public constructor
@@ -53,40 +48,13 @@ public class ThirdFragment extends Fragment implements ItemAdapter.PlayerInterfa
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+        adapter = new ItemAdapter(this);
+        fragmentThirdBinding.rvPlayer.setAdapter(adapter);
 
         //2022.10.24 ito
         // Get a new or existing ViewModel from the ViewModelProvider.
-        mBaseballViewModel = new ViewModelProvider(this).get(BaseballViewModel.class);
-
-        fragmentThirdBinding = FragmentThirdBinding.inflate(inflater,container,false);
-        View t_f_view = fragmentThirdBinding.getRoot();
-
-        //RecyclerViewの取得
-        RecyclerView recyclerView = fragmentThirdBinding.rvPlayer;
-
-        //LayoutManagerの設定
-        RecyclerView.LayoutManager mLayoutManager;
-        mLayoutManager = new LinearLayoutManager( getActivity() );
-        recyclerView.setLayoutManager( mLayoutManager );
-
-        //2022.10.28
-        // String dat[]=new String[100];
-        // for(int i=0 ; i<100 ;i++){ dat[i]="選手No."+(i+1); }
-        //ItemAdapter adapter = new ItemAdapter(dat);
-        //recyclerView.setAdapter(adapter);
-
-        //2022.10.29 ito
-        // ItemAdapter adapter = new ItemAdapter (new ItemAdapter.ItemDiff());
-        ItemAdapter adapter = new ItemAdapter (this);
-        fragmentThirdBinding.rvPlayer.setAdapter(adapter);
-
-        //ビュー・モデル取得
         mBaseballViewModel = new ViewModelProvider(requireActivity()).get(BaseballViewModel.class);
+
         //ビュー・モデルのgetAllメソッド呼び出しと、
         // getAllで取り出す値（List<PlayerAndTeam>）が変化したときのコールバック処理（onChanged）登録
         mBaseballViewModel.getAll().observe(getViewLifecycleOwner(), new Observer<List<PlayerAndTeam>>() {
@@ -96,11 +64,16 @@ public class ThirdFragment extends Fragment implements ItemAdapter.PlayerInterfa
                 adapter.submitList(playerAndTeam);
             }
         });
-
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_second, container, false);
-        return t_f_view;
     }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        fragmentThirdBinding = FragmentThirdBinding.inflate(inflater,container,false);
+        return fragmentThirdBinding.getRoot();
+    }
+
+    //選手名のクリック時の処理
     @Override
     public void onItemClick(PlayerAndTeam playerAndTeam) {
         mBaseballViewModel.setPlayerAndTeam(playerAndTeam);

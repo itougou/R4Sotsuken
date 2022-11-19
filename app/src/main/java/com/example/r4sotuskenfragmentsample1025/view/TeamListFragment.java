@@ -33,49 +33,28 @@ import java.util.List;
  */
 public class TeamListFragment extends Fragment implements TeamAdapter.TeamInterface{
 
-    //2022.10.29 ito
     private NavController navController;
-
-    //2022.10.24 ito
     private BaseballViewModel mBaseballViewModel;
-
-    //2022.10.27 ito
+    private TeamAdapter adapter;
     private FragmentTeamListBinding fragmentTeamListBinding;
-
-    //2022.11.15 ito
-    private View t_f_view;
 
     public TeamListFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        fragmentTeamListBinding = FragmentTeamListBinding.inflate(inflater,container,false);
+        return fragmentTeamListBinding.getRoot();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        mBaseballViewModel = new ViewModelProvider(this).get(BaseballViewModel.class);
-
-        fragmentTeamListBinding = FragmentTeamListBinding.inflate(inflater,container,false);
-
-        //View t_f_view = fragmentTeamListBinding.getRoot();
-        t_f_view = fragmentTeamListBinding.getRoot();
-
-        //RecyclerViewの取得
-        RecyclerView recyclerView = fragmentTeamListBinding.rvTeams;
-
-        //LayoutManagerの設定
-        RecyclerView.LayoutManager mLayoutManager;
-        mLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(mLayoutManager);
-
-        //2022.10.29 ito
-        // ItemAdapter adapter = new ItemAdapter (new ItemAdapter.ItemDiff());
-        TeamAdapter adapter = new TeamAdapter(this );
+        navController = Navigation.findNavController(view);
+        adapter = new TeamAdapter(this );
         fragmentTeamListBinding.rvTeams.setAdapter(adapter);
 
         //ビュー・モデル取得
@@ -87,9 +66,12 @@ public class TeamListFragment extends Fragment implements TeamAdapter.TeamInterf
             @Override
             public void onChanged(List<Team> team) {
                 //変化後の結果をTeamAdapterに渡しチーム一覧画面へ反映してもらう
+                Log.d("★TeamListFragment","getAllTeams→onChanged");
+
                 adapter.submitList(team);
             }
         });
+        Log.d("★★★★ TeamListFragent"," onViewCreated()");
 
         //チーム追加ボタンクリックイベントハンドラー登録
         fragmentTeamListBinding.btnAddTeam.setOnClickListener(new View.OnClickListener() {
@@ -101,42 +83,28 @@ public class TeamListFragment extends Fragment implements TeamAdapter.TeamInterf
             }
         });
 
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_second, container, false);
-        return t_f_view;
-
-    }
-    @Override
-    //このメソッドはteam_iem_view.xmlから直接ラムダ式で呼び出している
-    // android:onClick="@{() -> teamInterface.onItemClick(Team)}"
-    // ラムダ式で実装できるのは、関数型インターフェイスのメソッドのみ
-    // 本TeamListFragentｸﾗｽは teamInterfaceｲﾝﾀｰﾌｪｰｽ（TeamListAdapterｸﾗｽ内に定義）
-    // を実装したｸﾗｽであるため実装したﾒｿｯﾄﾞをXMLからﾗﾑﾀﾞ式で呼び出せる。
-    public void onItemClick(Team team) {
-        Log.i("★TeamListFragment","onItemClick() Team:"+team.getName());
-        mBaseballViewModel.setTeam(team);
-        navController.navigate(R.id.action_teamListFragment_to_teamEditFragment);
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        navController = Navigation.findNavController(view);
-    }
-
-    //2022.11.15 ito
+    //勝利数 DB更新処理 2022.11.15 ito
     @Override
     public void onUpdateWins( Team team ){
 
         Log.i("★TeamListFragment","onUpdateWins() Team mae:"+team.getName()+",Team.win:"+team.getWin());
-        mBaseballViewModel.setTeam(team);
+        //mBaseballViewModel.setTeam(team);
         mBaseballViewModel.updateTeamWin(team);
 
-        Toast.makeText(getActivity(), "チーム情報DBを更新しました", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "チーム情報DBを更新しました", Toast.LENGTH_SHORT).show();
 
         Log.i("★TeamListFragment","onUpdateWins() Team ato:"+team.getName()+",Team.win:"+team.getWin());
 
+    }
+
+    //チーム名クリック時の処理
+    @Override
+    public void onItemClick(Team team) {
+        Log.i("★TeamListFragment","onItemClick() Team:"+team.getName());
+        mBaseballViewModel.setTeam(team);
+        navController.navigate(R.id.action_teamListFragment_to_teamEditFragment);
     }
 
 }

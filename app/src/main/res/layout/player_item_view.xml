@@ -29,10 +29,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
-            android:onClick="@{() -> playerInterface.onItemClick(playerAndTeam)}"
             android:text="@{playerAndTeam.player.name}"
             android:textSize="20sp" />
-
+        <!--   ItemAdapterクラス内にコード記述する方法に変更   android:onClick="@{() -> playerInterface.onItemClick(playerAndTeam)}"-->
     </LinearLayout>
 
 </layout>

@@ -21,7 +21,7 @@ import com.example.r4sotuskenfragmentsample1025.entity.Team;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = { Team.class, Player.class  }, version = 2,
+@Database(entities = {Team.class, Player.class  }, version = 2,
         //最初Ver1作成時は autoMigrations はコメントにしておくこと
         autoMigrations = {
                 @AutoMigration (from = 1, to = 2)
@@ -75,7 +75,7 @@ abstract public class BaseballRoomDatabase  extends RoomDatabase {
 
                     //新たなファイルを読み込ませるには、createFromAsset("BaseballTeamDB2.db")のみ変更すること
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    BaseballRoomDatabase.class, "BaseballTeamDB4.db")
+                                    BaseballRoomDatabase.class, "BaseballTeamDB.db")
                             .addCallback(sRoomDatabaseCallback).createFromAsset("BaseballTeamDB4.db")
                             .build();
                 }

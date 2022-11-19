@@ -1,5 +1,7 @@
 package com.example.r4sotuskenfragmentsample1025.entity;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
@@ -17,13 +19,11 @@ public class Team {
     @ColumnInfo(name = "name")
     private String name;
 
-    //@ColumnInfo(name = "win" , defaultValue = "0")
-    @ColumnInfo(name = "win" )
+    @ColumnInfo(name = "win" , defaultValue = "0")
     @NonNull
     private int win;
 
-    //@ColumnInfo(name = "losing" , defaultValue = "0")
-    @ColumnInfo(name = "losing" )
+    @ColumnInfo(name = "losing" , defaultValue = "0")
     @NonNull
     private int losing;
 
@@ -44,11 +44,11 @@ public class Team {
         this.name = name;
     }
 
-    public int getWin() {  return win;   }
+    public int getWin() {  return this.win;   }
 
     public void setWin(@NonNull int win) { this.win = win;  }
 
-    public int getLosing() { return losing; }
+    public int getLosing() { return this.losing; }
 
     public void setLosing(@NonNull int losing) {
         this.losing = losing;
@@ -62,10 +62,11 @@ public class Team {
     }
 
     //2022.11.1
-    @Override
     public boolean equals(@Nullable Object obj) {
+        Team team = (Team) obj;
         return super.equals(obj);
     }
+
     public static DiffUtil.ItemCallback<Team> itemCallback = new DiffUtil.ItemCallback<Team>() {
         @Override
         public boolean areItemsTheSame(@NonNull Team oldItem, @NonNull Team newItem) {

@@ -37,7 +37,7 @@ public class BaseballViewModel  extends AndroidViewModel {
 
     //MutableData
     MutableLiveData<PlayerAndTeam> mutablePlayer = new MutableLiveData<>(); //選手詳細情報画面（FourthFragment)表示で使用
-    MutableLiveData<Team> mutableTeam = new MutableLiveData<>(); //ﾁｰﾑ一覧画面（TeaListFragment)表示で使用
+    MutableLiveData<Team> mutableTeam = new MutableLiveData<>(); //ﾁｰﾑ一覧画面（TeamListFragment)表示で使用
 
     //2022.10.24 ito
     //public LiveData<String> mSearchedData;
@@ -73,13 +73,41 @@ public class BaseballViewModel  extends AndroidViewModel {
     public void setPlayerAndTeam(PlayerAndTeam playerAndTeam){
         mutablePlayer.setValue(playerAndTeam);
     }
-    public PlayerAndTeam getPlayerAndTeam(){
-        return mutablePlayer.getValue();
+
+    public LiveData<PlayerAndTeam> getPlayerAndTeam(){
+        return mutablePlayer;
     }
+
     //2022.11.1 ito
     public void addTeam(Team team){
         mRepository.insertTeam(team);
+        //mutableTeam.setValue(team);
+    }
+    //2022.11.06
+    public void setTeam(Team team){
         mutableTeam.setValue(team);
+        Log.d("★TeamEditFragment","setTeam() mutableTeam:"+mutableTeam.getValue().getName());
+    }
+    //2022.11.06
+    public void updateTeam( String teamName ){
+
+        Log.d("★TeamEditFragment","updateTeam() mutableTeam:"+mutableTeam.getValue());
+        mutableTeam.getValue().setName(teamName);
+        mRepository.updateTeam( mutableTeam.getValue() );
+    }
+    //2022.11.15
+    public void updateTeamWin( Team team ){
+        Log.d("★TeamEditFragment","updateTeamWin() mTeam id:"+team.getId());
+        Log.d("★TeamEditFragment","updateTeamWin() mTeam name:"+team.getName());
+        Log.d("★TeamEditFragment","updateTeamWin() mTeam win:"+team.getWin());
+
+        mRepository.updateTeam( team );
+        Log.d("★TeamEditFragment","updateTeamWin() mutableTeam:"+mutableTeam.getValue());
+    }
+
+    public LiveData<Team> getTeam(){
+        Log.d("★TeamEditFragment","getTeam() mutableTeam.getValue():"+mutableTeam.getValue());
+        return mutableTeam;
     }
     //2022.11.06
     public void setTeam(Team team){

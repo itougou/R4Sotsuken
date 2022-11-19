@@ -30,7 +30,7 @@ public class TeamRepository {
     // Observed LiveData will notify the observer when the data has changed.
     //全チーム情報取り出し用メソッド
     public LiveData<List<Team>> getAllTeams() {
-        Log.d("★TeamRepository","getAllTeams()の中でmAllTeamsを返却");
+        Log.d("★TeamRepository","getAllTeams()の中でmAllTeamsを返却"+mAllTeams);
         return mAllTeams;
     }
 
@@ -43,7 +43,23 @@ public class TeamRepository {
                 mTeamDao.insertTeam( team );
                 Log.d("★TeamRepository","insertTeam()->run()-> insertTeam()");
             }
+        }).start();;
+        //this.mAllTeams = mTeamDao.getAlphabetizedTeam();    //全チーム情報取得 Room＆LiveDataが自動でDBの変更を監視＆通知してくれるため不要
+    }
+    //チーム１件追加メソッド 2022.11.1
+    public void updateTeam( Team team ){
+        //INSERT文は、普通に実行するとエラーになるので、別スレッドで実行
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mTeamDao.updateTeam( team );
+                Log.d("★TeamRepository","updateTeam()->run()-> updateTeam() team:"+team.getName() );
+            }
         }).start();
+        //this.mAllTeams = mTeamDao.getAlphabetizedTeam();    //全チーム情報取得 Room＆LiveDataが自動でDBの変更を監視＆通知してくれるため不要
+
+        Log.d("★TeamRepository","updateTeam() mTeamDao.getAlphabetizedTeams()呼び出し ﾌｨｰﾙﾄﾞmAllWordsへ格納:"+mAllTeams.getValue());
+
     }
     //チーム１件追加メソッド 2022.11.1
     public void updateTeam( Team team ){

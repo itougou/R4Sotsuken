@@ -21,9 +21,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:onClick="@{() -> teamInterface.onItemClick(Team)}"
+
             android:text="@{Team.name}"
             android:textSize="20sp" />
+        <!--   TeamAdapterクラス内にコード記述する方法に変更    android:onClick="@{() -> teamInterface.onItemClick(Team)}"-->
 
         <EditText
             android:id="@+id/editTextNumberDecimal"
