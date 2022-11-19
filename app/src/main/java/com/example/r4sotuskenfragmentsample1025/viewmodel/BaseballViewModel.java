@@ -109,31 +109,5 @@ public class BaseballViewModel  extends AndroidViewModel {
         Log.d("★TeamEditFragment","getTeam() mutableTeam.getValue():"+mutableTeam.getValue());
         return mutableTeam;
     }
-    //2022.11.06
-    public void setTeam(Team team){
-        mutableTeam.setValue(team);
-        Log.d("★TeamEditFragment","setTeam() mutableTeam:"+mutableTeam.getValue().getName());
-    }
-    //2022.11.06
-    public void updateTeam( String teamName ){
 
-        Log.d("★TeamEditFragment","updateTeam() mutableTeam:"+mutableTeam.getValue());
-        mutableTeam.getValue().setName(teamName);
-        mRepository.updateTeam( mutableTeam.getValue() );
-    }
-    //2022.11.15
-    public void updateTeamWin( Team team ){
-        Log.d("★TeamEditFragment","updateTeamWin() mTeam id:"+team.getId());
-        Log.d("★TeamEditFragment","updateTeamWin() mTeam name:"+team.getName());
-        Log.d("★TeamEditFragment","updateTeamWin() mTeam win:"+team.getWin());
-
-        mutableTeam.getValue().setWin(team.getWin());
-        mRepository.updateTeam( mutableTeam.getValue() );
-        Log.d("★TeamEditFragment","updateTeamWin() mutableTeam:"+mutableTeam.getValue());
-    }
-    //2022.11.06
-    public Team getTeam(){
-        Log.d("★TeamEditFragment","getTeam() mutableTeam.getValue():"+mutableTeam.getValue());
-        return mutableTeam.getValue();
-    }
 }
