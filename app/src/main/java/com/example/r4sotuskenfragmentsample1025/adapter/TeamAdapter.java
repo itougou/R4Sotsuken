@@ -39,11 +39,10 @@ public class TeamAdapter extends ListAdapter<Team,TeamAdapter.ViewHolder> {
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        //2022.11.19
-        final ViewHolder vh = (ViewHolder)viewHolder;
+
         // 2022.10.28 ito　★★★RecyclerViewにDataBindingを導入してみた - Qiita　を参考に記述
         // Team team = getItem(position);  // 全セルデータからx番目のデータを取得
-        Team team = getItem(vh.getAbsoluteAdapterPosition());  // 全セルデータからx番目のデータを取得
+        Team team = getItem(viewHolder.getAbsoluteAdapterPosition());  // 全セルデータからx番目のデータを取得
         viewHolder.teamIemViewBinding.setTeam(team);
         viewHolder.teamIemViewBinding.executePendingBindings();
 
@@ -59,7 +58,7 @@ public class TeamAdapter extends ListAdapter<Team,TeamAdapter.ViewHolder> {
                 teamInterface.onUpdateWins( team );
 
                 Log.i("★TeamAdapter","Team:"+team.getName()+",Team.win:"+team.getWin());
-                Log.d("★TeamAdapter","onClick() position："+vh.getAbsoluteAdapterPosition());
+                Log.d("★TeamAdapter","onClick() position："+viewHolder.getAbsoluteAdapterPosition());
             }
         });
         //勝利数の＋ボタンのクリックハンドラーの登録　2022.11.16 ito
@@ -75,7 +74,7 @@ public class TeamAdapter extends ListAdapter<Team,TeamAdapter.ViewHolder> {
                 teamInterface.onUpdateWins( team );
 
                 Log.i("★TeamAdapter","勝利数の＋ボタンのクリックハンドラー  Team :"+team.getName()+",Team.win:"+team.getWin());
-                Log.d("★TeamAdapter","勝利数の＋ボタンのクリックハンドラー  position："+vh.getAbsoluteAdapterPosition());
+                Log.d("★TeamAdapter","勝利数の＋ボタンのクリックハンドラー  position："+viewHolder.getAbsoluteAdapterPosition());
             }
         });
         //勝利数の―ボタンのクリックハンドラーの登録　2022.11.16 ito
@@ -91,7 +90,7 @@ public class TeamAdapter extends ListAdapter<Team,TeamAdapter.ViewHolder> {
                 teamInterface.onUpdateWins( team );
 
                 Log.i("★TeamAdapter","勝利数の―ボタンのクリックハンドラー  Team:"+team.getName()+",Team.win:"+team.getWin());
-                Log.d("★TeamAdapter","勝利数の―ボタンのクリックハンドラー  position："+vh.getAbsoluteAdapterPosition());
+                Log.d("★TeamAdapter","勝利数の―ボタンのクリックハンドラー  position："+viewHolder.getAbsoluteAdapterPosition());
             }
         });
 

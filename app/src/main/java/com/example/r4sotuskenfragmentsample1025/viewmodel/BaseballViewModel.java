@@ -10,8 +10,10 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.r4sotuskenfragmentsample1025.entity.Player;
 import com.example.r4sotuskenfragmentsample1025.entity.PlayerAndTeam;
+import com.example.r4sotuskenfragmentsample1025.entity.PlayerPositionAndPosition;
 import com.example.r4sotuskenfragmentsample1025.entity.Team;
 import com.example.r4sotuskenfragmentsample1025.repo.PlayerAndTeamRepository;
+import com.example.r4sotuskenfragmentsample1025.repo.PlayerPositionAndPositionRepository;
 import com.example.r4sotuskenfragmentsample1025.repo.PlayerRepository;
 import com.example.r4sotuskenfragmentsample1025.repo.TeamRepository;
 
@@ -22,6 +24,7 @@ public class BaseballViewModel  extends AndroidViewModel {
     private TeamRepository mRepository;
     private PlayerAndTeamRepository mRepository2;
     private PlayerRepository mRepository3;
+    private PlayerPositionAndPositionRepository mRepository4;
 
 
     // Using LiveData and caching what getAlphabetizedWords returns has several benefits:
@@ -37,6 +40,8 @@ public class BaseballViewModel  extends AndroidViewModel {
 
     //MutableData
     MutableLiveData<PlayerAndTeam> mutablePlayer = new MutableLiveData<>(); //選手詳細情報画面（FourthFragment)表示で使用
+    //2022.11.29 ito
+    MutableLiveData<List<PlayerPositionAndPosition>> mutablePlayerPositionAndPosition = new MutableLiveData<List<PlayerPositionAndPosition>>(); //選手詳細情報画面（FourthFragment)表示で使用
     MutableLiveData<Team> mutableTeam = new MutableLiveData<>(); //ﾁｰﾑ一覧画面（TeamListFragment)表示で使用
 
     //2022.10.24 ito
@@ -55,6 +60,10 @@ public class BaseballViewModel  extends AndroidViewModel {
         this.mRepository3 = new PlayerRepository(application);
         Log.d("★BaseballViewModel","BaseballViewModel() mRepository3.getAllPlayers()呼び出し");
         mAllPlayers = mRepository3.getAllPlayers();
+
+        //2022.11.29 ito
+        mRepository4 = new PlayerPositionAndPositionRepository(application);
+        //mAllPlayerPositionAndPosition = mRepository4.serchPlayerePosition2();
     }
 
     public LiveData<List<Team>> getAllTeams() {
@@ -76,6 +85,20 @@ public class BaseballViewModel  extends AndroidViewModel {
 
     public LiveData<PlayerAndTeam> getPlayerAndTeam(){
         return mutablePlayer;
+    }
+
+    //2022.11.29 ito
+    public void setPlayerPositionAndPosition(List<PlayerPositionAndPosition> ppap){
+        mutablePlayerPositionAndPosition.setValue(ppap);
+    }
+    public LiveData<List<PlayerPositionAndPosition>> getPlayerPositionAndPosition(String player_id){
+        Log.i("★BaseballViewModel","HandlePositionAndPosition() player_id："+player_id );
+
+        LiveData<List<PlayerPositionAndPosition>> lv = mRepository4.serchPlayerPosition(player_id);
+
+        Log.i("★BaseballViewModel","HandlePositionAndPosition() serchHandlePosition(player_id)："+lv );
+
+        return lv;
     }
 
     //2022.11.1 ito

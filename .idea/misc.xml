@@ -3,17 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG/app/src/main/res/layout/fragment_fourth.xml" value="0.10416666666666667" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG/app/src/main/res/layout/fragment_team_list.xml" value="0.15670289855072464" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG/app/src/main/res/layout/fragment_fourth.xml" value="0.12" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG/app/src/main/res/layout/fragment_third.xml" value="0.1" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG/app/src/main/res/layout/player_item_view.xml" value="0.10416666666666667" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG/app/src/main/res/layout/team_iem_view.xml" value="0.15670289855072464" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG_Ver2/app/src/main/res/layout/fragment_fourth.xml" value="0.2" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG_Ver2/app/src/main/res/layout/fragment_team_edit.xml" value="0.1" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG_Ver2/app/src/main/res/layout/fragment_team_list.xml" value="0.1" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG_Ver2/app/src/main/res/layout/fragment_third.xml" value="0.2" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG_Ver2/app/src/main/res/layout/player_item_view.xml" value="0.2" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG_Ver2/app/src/main/res/layout/team_iem_view.xml" value="0.18115942028985507" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG/app/src/main/res/layout/player_item_view.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG/app/src/main/res/layout/position_item_view.xml" value="0.1" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/R4SotuskenFGSmpl_with_VBG_RV_DBG/app/src/main/res/layout/team_iem_view.xml" value="0.1" />
       </map>
     </option>
   </component>

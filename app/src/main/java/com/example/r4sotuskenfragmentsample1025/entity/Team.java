@@ -1,7 +1,5 @@
 package com.example.r4sotuskenfragmentsample1025.entity;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
@@ -19,11 +17,13 @@ public class Team {
     @ColumnInfo(name = "name")
     private String name;
 
-    @ColumnInfo(name = "win" , defaultValue = "0")
+    //@ColumnInfo(name = "win" , defaultValue = "0")
+    @ColumnInfo(name = "win" )
     @NonNull
     private int win;
 
-    @ColumnInfo(name = "losing" , defaultValue = "0")
+    //@ColumnInfo(name = "losing" , defaultValue = "0")
+    @ColumnInfo(name = "losing" )
     @NonNull
     private int losing;
 
@@ -63,7 +63,6 @@ public class Team {
 
     //2022.11.1
     public boolean equals(@Nullable Object obj) {
-        Team team = (Team) obj;
         return super.equals(obj);
     }
 

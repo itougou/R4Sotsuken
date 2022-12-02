@@ -8,23 +8,36 @@ import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.r4sotuskenfragmentsample1025.dao.PlayerAndTeamDao;
 import com.example.r4sotuskenfragmentsample1025.dao.PlayerDao;
+import com.example.r4sotuskenfragmentsample1025.dao.PlayerPositionAndPositionDao;
+import com.example.r4sotuskenfragmentsample1025.dao.PlayerPositionDao;
 import com.example.r4sotuskenfragmentsample1025.dao.TeamDao;
 import com.example.r4sotuskenfragmentsample1025.entity.Player;
-import com.example.r4sotuskenfragmentsample1025.entity.PlayerAndTeam;
+import com.example.r4sotuskenfragmentsample1025.entity.PlayerPosition;
+import com.example.r4sotuskenfragmentsample1025.entity.Position;
 import com.example.r4sotuskenfragmentsample1025.entity.Team;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Team.class, Player.class  }, version = 2,
+@Database(entities = {Team.class, Player.class, Position.class, PlayerPosition.class  }, version = 8,
         //最初Ver1作成時は autoMigrations はコメントにしておくこと
+        //テーブルの中の値が変わったのみの場合はVerUpしないで、Emurator内のファイル削除し、.dbのファイル名を変えて読み込ませること。
+        //どうしてもうまくいかなくなった場合はEmuratorを削除し、作成しなおすと良い
+
+        //テーブル名を変更したときは、Enurator内の.dbファイル削除、versionアップ、以前のバージョンの@AutoMigrationコメント化
+        //assertへ変更後のdbファイル設置（ファイル名も変えて）で読み込めた。
         autoMigrations = {
-                @AutoMigration (from = 1, to = 2)
+//                @AutoMigration (from = 1, to = 2),
+//                @AutoMigration (from = 2, to = 3),
+//                @AutoMigration (from = 3, to = 4),
+//                @AutoMigration (from = 4, to = 5),
+//                @AutoMigration (from = 5, to = 6),
+//                @AutoMigration (from = 6, to = 7),
+                @AutoMigration (from = 7, to = 8)
         },
         exportSchema = true
 )
@@ -34,6 +47,9 @@ abstract public class BaseballRoomDatabase  extends RoomDatabase {
     public abstract PlayerDao PlayerDao();
     public abstract TeamDao TeamDao();
     public abstract PlayerAndTeamDao PlayerAndTeamDao();
+    //2022.11.29 ito
+    public abstract PlayerPositionAndPositionDao PlayerPositionAndPositionDao();
+    public abstract PlayerPositionDao PlayerPositionDao();
 
     // marking the instance as volatile to ensure atomic access to the variable
     private static volatile BaseballRoomDatabase INSTANCE;
@@ -76,7 +92,7 @@ abstract public class BaseballRoomDatabase  extends RoomDatabase {
                     //新たなファイルを読み込ませるには、createFromAsset("BaseballTeamDB2.db")のみ変更すること
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     BaseballRoomDatabase.class, "BaseballTeamDB.db")
-                            .addCallback(sRoomDatabaseCallback).createFromAsset("BaseballTeamDB4.db")
+                            .addCallback(sRoomDatabaseCallback).createFromAsset("BaseballTeamDB12.db")
                             .build();
                 }
             }

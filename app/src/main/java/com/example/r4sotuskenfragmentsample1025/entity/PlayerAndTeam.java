@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.room.Embedded;
-import androidx.room.Entity;
 import androidx.room.Relation;
 
 public class PlayerAndTeam {

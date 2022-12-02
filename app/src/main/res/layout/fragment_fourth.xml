@@ -79,6 +79,35 @@
                 android:text="@{`所属：`+baseballViewModel.playerAndTeam.team.name}"
                 android:textSize="20sp" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:text="@{`対応可能なポジション：`}"
+                android:textSize="20sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+<!--            とりあえずTextViewにポジションの情報を表示してみた-->
+<!--            <TextView-->
+<!--                android:id="@+id/txtViewPosition"-->
+<!--                android:layout_width="280dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="20sp" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPosition"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="12sp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:listitem="@layout/position_item_view" />
+
         </LinearLayout>
 
     </ScrollView>

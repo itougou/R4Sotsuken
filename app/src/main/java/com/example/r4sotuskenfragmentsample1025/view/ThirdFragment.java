@@ -13,8 +13,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.r4sotuskenfragmentsample1025.R;
 import com.example.r4sotuskenfragmentsample1025.adapter.ItemAdapter;
@@ -77,7 +75,13 @@ public class ThirdFragment extends Fragment implements ItemAdapter.PlayerInterfa
     @Override
     public void onItemClick(PlayerAndTeam playerAndTeam) {
         mBaseballViewModel.setPlayerAndTeam(playerAndTeam);
-        navController.navigate(R.id.action_thirdFragment_to_fourthFragment);
+
+        //2022.11.29 ito　ここではDaoの検索結果をうまく取り出せない？nullになるので
+        // FourceFragmentの onViewCreatedで 検索するようにする
+        //List<HandlePositionAndPosition> l = mBaseballViewModel.getHandlePositionAndPosition(playerAndTeam.getId()).getValue();
+        //Log.i("★ThirdFragment","getHandlePositionAndPosition:"+l);
+
+        navController.navigate(R.id.action_thirdFragment_to_fourthFragment);    //FourthFragmentへ画面遷移
         Log.i("★ThirdFragment","onItemClick()");
     }
 }

@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 1,
-    "identityHash": "7be339e52a3b0c08a32e383472ce2ea4",
+    "version": 5,
+    "identityHash": "a42ddc120caf7a43580c634034fcc991",
     "entities": [
       {
         "tableName": "team",
@@ -125,7 +125,7 @@
         "foreignKeys": []
       },
       {
-        "tableName": "player_position",
+        "tableName": "handle_position",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`player_id` TEXT NOT NULL, `position_id` TEXT NOT NULL, PRIMARY KEY(`player_id`, `position_id`))",
         "fields": [
           {
@@ -155,7 +155,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7be339e52a3b0c08a32e383472ce2ea4')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a42ddc120caf7a43580c634034fcc991')"
     ]
   }
 }

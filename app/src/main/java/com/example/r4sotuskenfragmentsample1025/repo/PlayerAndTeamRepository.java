@@ -29,7 +29,7 @@ public class PlayerAndTeamRepository {
     // Observed LiveData will notify the observer when the data has changed.
     // 全選手＆チーム情報取り出し用メソッド
     public LiveData<List<PlayerAndTeam>> getAll() {
-        Log.d("★TeamRepository","getAllTeams()の中でmAllTeamsを返却");
+        Log.d("★TeamRepository","getAllTeams()の中でmAllTeamsを返却:"+mAllPlayerAndTeam.getValue());
         return this.mAllPlayerAndTeam;
     }
 
