@@ -40,8 +40,7 @@ public class BaseballViewModel  extends AndroidViewModel {
 
     //MutableData
     MutableLiveData<PlayerAndTeam> mutablePlayer = new MutableLiveData<>(); //選手詳細情報画面（FourthFragment)表示で使用
-    //2022.11.29 ito
-    MutableLiveData<List<PlayerPositionAndPosition>> mutablePlayerPositionAndPosition = new MutableLiveData<List<PlayerPositionAndPosition>>(); //選手詳細情報画面（FourthFragment)表示で使用
+
     MutableLiveData<Team> mutableTeam = new MutableLiveData<>(); //ﾁｰﾑ一覧画面（TeamListFragment)表示で使用
 
     //2022.10.24 ito
@@ -88,9 +87,6 @@ public class BaseballViewModel  extends AndroidViewModel {
     }
 
     //2022.11.29 ito
-    public void setPlayerPositionAndPosition(List<PlayerPositionAndPosition> ppap){
-        mutablePlayerPositionAndPosition.setValue(ppap);
-    }
     public LiveData<List<PlayerPositionAndPosition>> getPlayerPositionAndPosition(String player_id){
         Log.i("★BaseballViewModel","HandlePositionAndPosition() player_id："+player_id );
 

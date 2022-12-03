@@ -25,10 +25,11 @@ import java.util.concurrent.Executors;
 
 @Database(entities = {Team.class, Player.class, Position.class, PlayerPosition.class  }, version = 8,
         //最初Ver1作成時は autoMigrations はコメントにしておくこと
-        //テーブルの中の値が変わったのみの場合はVerUpしないで、Emurator内のファイル削除し、.dbのファイル名を変えて読み込ませること。
+
+        //テーブルの中の値が変わったのみの場合はVerUpしないで、DeviceExplorer内のファイル削除し、.dbのファイル名を変えて読み込ませること。
         //どうしてもうまくいかなくなった場合はEmuratorを削除し、作成しなおすと良い
 
-        //テーブル名を変更したときは、Enurator内の.dbファイル削除、versionアップ、以前のバージョンの@AutoMigrationコメント化
+        //テーブル名を変更したときは、DeviceExplorer内の.dbファイル削除、versionアップ、以前のバージョンの@AutoMigrationコメント化
         //assertへ変更後のdbファイル設置（ファイル名も変えて）で読み込めた。
         autoMigrations = {
 //                @AutoMigration (from = 1, to = 2),

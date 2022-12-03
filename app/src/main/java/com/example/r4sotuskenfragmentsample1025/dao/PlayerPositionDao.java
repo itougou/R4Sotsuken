@@ -8,6 +8,7 @@ import com.example.r4sotuskenfragmentsample1025.entity.PlayerPosition;
 
 import java.util.List;
 
+//現在未使用
 @Dao
 public interface PlayerPositionDao {
     @Query("SELECT * FROM player_position ORDER BY player_id ASC")

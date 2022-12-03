@@ -15,22 +15,15 @@ import com.example.r4sotuskenfragmentsample1025.entity.PlayerPositionAndPosition
 import java.util.List;
 
 public class PlayerPositionAndPositionRepository {
-    private LiveData<List<PlayerPositionAndPosition>> mAllPlayerPositionAndPosition;
-    private LiveData<PlayerAndTeam> mSearchedPlayerAndTeam;
+
     private PlayerPositionAndPositionDao mPlayerPositionAndPositionDao;
-    private PlayerPositionDao mPlayerPositionDao;
-    private PlayerAndTeamDao mPlayerAndTeamDao;
-    private LiveData<List<PlayerAndTeam>> mAllPlayerAndTeam;
 
     public PlayerPositionAndPositionRepository(Application application) {
         //データベースクラスのインスタンス取得
         BaseballRoomDatabase db = BaseballRoomDatabase.getDatabase(application);
 
         mPlayerPositionAndPositionDao = db.PlayerPositionAndPositionDao();  //DAO取得
-        mPlayerPositionDao = db.PlayerPositionDao();  //DAO取得
 
-        mPlayerAndTeamDao = db.PlayerAndTeamDao();  //DAO取得
-        this.mAllPlayerAndTeam = mPlayerAndTeamDao.getAll();    //全選手＆チーム情報取得
     }
 
     // Room executes all queries on a separate thread.
@@ -41,7 +34,7 @@ public class PlayerPositionAndPositionRepository {
         return mPlayerPositionAndPositionDao.serchPlayerPosition(player_id);
     }
 
-//    public LiveData<List<PlayerPositionAndPosition>> serchPlayerPosition2() {
+//×       public LiveData<List<PlayerPositionAndPosition>> serchPlayerPosition2() {
 //        Log.d("★P_P_A_P Repositor","getAllTeams()の中でmAllTeamsを返却");
 //        Log.i("★PPAP ","this.mAllPlayerAndTeam："+this.mAllPlayerAndTeam.getValue());
 //        return mPlayerPositionAndPositionDao.serchPlayerPosition();
