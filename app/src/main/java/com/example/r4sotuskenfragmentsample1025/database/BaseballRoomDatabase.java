@@ -14,6 +14,7 @@ import com.example.r4sotuskenfragmentsample1025.dao.PlayerAndTeamDao;
 import com.example.r4sotuskenfragmentsample1025.dao.PlayerDao;
 import com.example.r4sotuskenfragmentsample1025.dao.PlayerPositionAndPositionDao;
 import com.example.r4sotuskenfragmentsample1025.dao.PlayerPositionDao;
+import com.example.r4sotuskenfragmentsample1025.dao.PlayerWithPositionDao;
 import com.example.r4sotuskenfragmentsample1025.dao.TeamDao;
 import com.example.r4sotuskenfragmentsample1025.entity.Player;
 import com.example.r4sotuskenfragmentsample1025.entity.PlayerPosition;
@@ -23,7 +24,7 @@ import com.example.r4sotuskenfragmentsample1025.entity.Team;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Team.class, Player.class, Position.class, PlayerPosition.class  }, version = 8,
+@Database(entities = {Team.class, Player.class, Position.class, PlayerPosition.class  }, version = 9,
         //最初Ver1作成時は autoMigrations はコメントにしておくこと
 
         //テーブルの中の値が変わったのみの場合はVerUpしないで、DeviceExplorer内のファイル削除し、.dbのファイル名を変えて読み込ませること。
@@ -38,7 +39,8 @@ import java.util.concurrent.Executors;
 //                @AutoMigration (from = 4, to = 5),
 //                @AutoMigration (from = 5, to = 6),
 //                @AutoMigration (from = 6, to = 7),
-                @AutoMigration (from = 7, to = 8)
+//                @AutoMigration (from = 7, to = 8),
+                @AutoMigration (from = 8, to = 9)
         },
         exportSchema = true
 )
@@ -51,6 +53,8 @@ abstract public class BaseballRoomDatabase  extends RoomDatabase {
     //2022.11.29 ito
     public abstract PlayerPositionAndPositionDao PlayerPositionAndPositionDao();
     public abstract PlayerPositionDao PlayerPositionDao();
+    //2022.12.6
+    public abstract PlayerWithPositionDao PlayerWithPositionDao();
 
     // marking the instance as volatile to ensure atomic access to the variable
     private static volatile BaseballRoomDatabase INSTANCE;
@@ -93,7 +97,7 @@ abstract public class BaseballRoomDatabase  extends RoomDatabase {
                     //新たなファイルを読み込ませるには、createFromAsset("BaseballTeamDB2.db")のみ変更すること
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     BaseballRoomDatabase.class, "BaseballTeamDB.db")
-                            .addCallback(sRoomDatabaseCallback).createFromAsset("BaseballTeamDB12.db")
+                            .addCallback(sRoomDatabaseCallback).createFromAsset("BaseballTeamDB13.db")
                             .build();
                 }
             }

@@ -15,6 +15,6 @@ public interface PlayerAndTeamDao {
     LiveData<List<PlayerAndTeam>> getAll();
 
     @Transaction
-    @Query("SELECT * FROM player WHERE  player.id = :id")
+    @Query("SELECT * FROM player WHERE  player.player_id = :id")
     LiveData<PlayerAndTeam> serchPlayer( String id);
 }

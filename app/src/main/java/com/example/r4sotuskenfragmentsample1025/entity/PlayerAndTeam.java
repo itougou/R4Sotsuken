@@ -15,7 +15,7 @@ public class PlayerAndTeam {
 
     //2022.10.29 ito
     public String getId() {
-        return player.getId();
+        return player.getPlayer_id();
     }
 
     //2022.10.29 ito

@@ -44,6 +44,13 @@
         android:backgroundTint="#7C7C7C"
         android:text="選手名／身長／チーム名（おまけ）" />
 
+    <Button
+        android:id="@+id/buttonPlayerAndPosition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#7C7C7C"
+        android:text="選手ID／ポジションID（おまけ）" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

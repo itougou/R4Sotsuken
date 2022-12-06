@@ -1,6 +1,7 @@
 package com.example.r4sotuskenfragmentsample1025.entity;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.RenameTable;
 
@@ -15,6 +16,7 @@ public class PlayerPosition {
     private String player_id;
 
     @NonNull
+    @ColumnInfo(index = true)
     private String position_id;
 
     public PlayerPosition(String player_id, String position_id) {

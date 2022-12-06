@@ -11,22 +11,22 @@ import androidx.room.PrimaryKey;
 public class Position {
     @PrimaryKey(autoGenerate = false)
     @NonNull
-    private String id;  //ポジションID
+    private String position_id;  //ポジションID
     private String name;    //ポジション名
     private String jp_name; //日本語名
 
-    public Position(String id, String name, String jp_name) {
-        this.id = id;
+    public Position(String position_id, String name, String jp_name) {
+        this.position_id = position_id;
         this.name = name;
         this.jp_name = jp_name;
     }
 
-    public String getId() {
-        return id;
+    public String getPosition_id() {
+        return position_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPosition_id(String position_id) {
+        this.position_id = position_id;
     }
 
     public String getName() {

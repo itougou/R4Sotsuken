@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import com.example.r4sotuskenfragmentsample1025.R;
 import com.example.r4sotuskenfragmentsample1025.entity.Player;
 import com.example.r4sotuskenfragmentsample1025.entity.PlayerAndTeam;
+import com.example.r4sotuskenfragmentsample1025.entity.PlayerWithPosition;
+import com.example.r4sotuskenfragmentsample1025.entity.Position;
 import com.example.r4sotuskenfragmentsample1025.entity.Team;
 import com.example.r4sotuskenfragmentsample1025.viewmodel.BaseballViewModel;
 import com.example.r4sotuskenfragmentsample1025.databinding.FragmentSecondBinding;
@@ -139,6 +141,55 @@ public class SecondFragment extends Fragment {
             }
         });
 
+        //2022.12.5
+        //  選手／ポジション（おまけ） ボタンクリック時
+        //Button bt3 = s_f_view.findViewById(R.id.buttonbuttonPlayerAndPosition);
+        // ボタンクリックリスナー設定
+        //bt3.setOnClickListener(new View.OnClickListener() {
+        binding.buttonPlayerAndPosition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+/*** 2022.12.6
+                // Create the observer which updates the UI.
+                final Observer<List<PlayerPositionAndPosition>> searchObserver = new Observer<List<PlayerPositionAndPosition>>() {
+                    @Override
+                    public void onChanged(List<PlayerPositionAndPosition> playerPositionAndPosition ) {
+                        //TextView tv = s_f_view.findViewById(R.id.txtTeams);
+                        Log.d("★SecondFragment","onClick()buttonbuttonPlayerAndPosition　TextView binding.buttonPlayerAndPosition ="+binding.buttonPlayerAndPosition);
+                        binding.txtTeams.setText("");
+                        for(PlayerPositionAndPosition t:playerPositionAndPosition){
+                            Log.d("★SecondFragment","onChanged player:"+t.getPlayer_id());
+                            Log.d("★SecondFragment","onChanged team:"+t.getPosition_id());
+                            binding.txtTeams.setText(binding.txtTeams.getText()+"\n\r"+t.getPlayer_id()+"/"+t.getPosition_id());
+                        }
+                    }
+                };
+                mBaseballViewModel.getPlayerPositonAndPosition().observe(getViewLifecycleOwner(), searchObserver );
+ ***/
+                Log.d("★SecondFragment","onClick()buttonbuttonPlayerAndPosition end");
+                // Create the observer which updates the UI.
+                final Observer<List<PlayerWithPosition>> searchObserver2 = new Observer <List<PlayerWithPosition>>() {
+                    @Override
+                    public void onChanged(List<PlayerWithPosition> playerWithPositions ) {
+                        //TextView tv = s_f_view.findViewById(R.id.txtTeams);
+                        binding.txtTeams.setText("");
+                        for(PlayerWithPosition pwp : playerWithPositions) {
+                            Log.d("★SecondFragment", "onChanged PlayerID:" + pwp.player.getPlayer_id());
+                            binding.txtTeams.setText(binding.txtTeams.getText() + pwp.player.getPlayer_id() +"選手  　");
+                            for (Position p : pwp.positions) {
+                                binding.txtTeams.setText(binding.txtTeams.getText() + "\n\r　　　" + p.getPosition_id() + "/" + p.getName());
+                            }
+
+                            binding.txtTeams.setText(binding.txtTeams.getText() + "\n\r");
+                        }
+                    }
+                };
+                mBaseballViewModel.getPlayerWithPosition().observe(getViewLifecycleOwner(), searchObserver2 );
+                //
+                Log.d("★SecondFragment","onClick()buttonbuttonPlayerAndPosition end");
+
+            }
+        });
         //2022.10.28 ito
         //現在未使用？
         mBaseballViewModel.getAllPlayers( ).observe(getViewLifecycleOwner(), new Observer<List<Player>>() {

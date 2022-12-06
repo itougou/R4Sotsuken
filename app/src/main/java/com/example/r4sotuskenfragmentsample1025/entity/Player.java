@@ -18,7 +18,7 @@ public class Player {
 
     @PrimaryKey(autoGenerate = false)
     @NonNull
-    private String id;
+    private String player_id;
 
     @ColumnInfo(name = "name")
     private String name;
@@ -35,12 +35,12 @@ public class Player {
     @ColumnInfo(name = "team_id")
     private String team_id;
 
-    public String getId() {
-        return id;
+    public String getPlayer_id() {
+        return player_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPlayer_id(String id) {
+        this.player_id = id;
     }
 
     public String getName() {
@@ -96,7 +96,7 @@ public class Player {
     public static DiffUtil.ItemCallback<Player> itemCallback = new DiffUtil.ItemCallback<Player>() {
         @Override
         public boolean areItemsTheSame(@NonNull Player oldItem, @NonNull Player newItem) {
-            return oldItem.getId().equals(newItem.getId());
+            return oldItem.getPlayer_id().equals(newItem.getPlayer_id());
         }
 
         @Override

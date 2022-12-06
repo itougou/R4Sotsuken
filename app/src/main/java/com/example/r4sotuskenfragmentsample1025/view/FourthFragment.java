@@ -63,7 +63,7 @@ public class FourthFragment extends Fragment  implements PositionAdapter.Positio
         //2022.11.30 ito　選手・ポジションの情報を取り出しセットする処理
         //ビュー・モデルのgetHandlePositionAndPosition( player_id )メソッド呼び出しと、
         // 取り出す値（List<HandlePositionAndPosition>）が変化したときのコールバック処理（onChanged）登録
-        String player_id = baseballViewModel.getPlayerAndTeam().getValue().player.getId(); //クリックした行の選手IDを取り出す
+        String player_id = baseballViewModel.getPlayerAndTeam().getValue().player.getPlayer_id(); //クリックした行の選手IDを取り出す
         Log.i("★FourceFragment","player.getId()："+player_id);
         baseballViewModel.getPlayerPositionAndPosition( player_id ).observe(getViewLifecycleOwner(), new Observer<List<PlayerPositionAndPosition>>() {
             @Override

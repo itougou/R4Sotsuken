@@ -6,14 +6,16 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
+import java.util.List;
+
 /*
- * PlayerPosition と Position の関連づけ  のエンティティクラス
+ * PlayerPosition（１） と Position（１） の１対１ の関連づけ  のエンティティクラス
  */
 public class PlayerPositionAndPosition {
     @Embedded
     public PlayerPosition playerPosition;   //主のテーブル＝player_positionテーブル
 
-    @Relation( parentColumn = "position_id", entityColumn = "id")
+    @Relation( parentColumn = "position_id", entityColumn = "position_id")
     public Position position; //従のテーブル＝positionテーブル
 
     public String getPlayer_id() {
@@ -22,6 +24,7 @@ public class PlayerPositionAndPosition {
     public String getPosition_id() {
         return playerPosition.getPosition_id();
     }
+
 
     @Override
     public boolean equals(@Nullable Object obj) {

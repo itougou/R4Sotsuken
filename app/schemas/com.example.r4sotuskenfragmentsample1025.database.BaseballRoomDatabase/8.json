@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 8,
-    "identityHash": "7be339e52a3b0c08a32e383472ce2ea4",
+    "identityHash": "feac8610a6a89d6da87f493e05e397c9",
     "entities": [
       {
         "tableName": "team",
@@ -44,11 +44,11 @@
       },
       {
         "tableName": "player",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT, `height` INTEGER NOT NULL, `weight` INTEGER NOT NULL, `face_url` TEXT, `team_id` TEXT, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`player_id` TEXT NOT NULL, `name` TEXT, `height` INTEGER NOT NULL, `weight` INTEGER NOT NULL, `face_url` TEXT, `team_id` TEXT, PRIMARY KEY(`player_id`))",
         "fields": [
           {
-            "fieldPath": "id",
-            "columnName": "id",
+            "fieldPath": "player_id",
+            "columnName": "player_id",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -85,7 +85,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "player_id"
           ],
           "autoGenerate": false
         },
@@ -94,11 +94,11 @@
       },
       {
         "tableName": "position",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT, `jp_name` TEXT, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`position_id` TEXT NOT NULL, `name` TEXT, `jp_name` TEXT, PRIMARY KEY(`position_id`))",
         "fields": [
           {
-            "fieldPath": "id",
-            "columnName": "id",
+            "fieldPath": "position_id",
+            "columnName": "position_id",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -117,7 +117,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "position_id"
           ],
           "autoGenerate": false
         },
@@ -155,7 +155,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7be339e52a3b0c08a32e383472ce2ea4')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'feac8610a6a89d6da87f493e05e397c9')"
     ]
   }
 }
