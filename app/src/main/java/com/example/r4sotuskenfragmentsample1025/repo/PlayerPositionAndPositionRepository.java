@@ -10,7 +10,7 @@ import com.example.r4sotuskenfragmentsample1025.database.BaseballRoomDatabase;
 import com.example.r4sotuskenfragmentsample1025.entity.PlayerPositionAndPosition;
 
 import java.util.List;
-// PlayerPosition（１）Position（１）の関連付けクラス
+// PlayerPosition（１）Position（１）の関連付け情報のリポジトリ
 public class PlayerPositionAndPositionRepository {
 
     private PlayerPositionAndPositionDao mPlayerPositionAndPositionDao;

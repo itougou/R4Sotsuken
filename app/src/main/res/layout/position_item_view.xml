@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <data>
-    <variable name="playerPositionAndPosition" type="com.example.r4sotuskenfragmentsample1025.entity.PlayerPositionAndPosition" />
+    <variable name="position" type="com.example.r4sotuskenfragmentsample1025.entity.Position" />
     <variable
         name="PositionInterface"
         type="com.example.r4sotuskenfragmentsample1025.adapter.PositionAdapter.PositionInterface" />
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_weight="1.0"
-            android:text="@{playerPositionAndPosition.position.name+`(`+playerPositionAndPosition.position.jp_name+')'}"
+            android:text="@{position.name+`(`+position.jp_name+')'}"
             android:textSize="17sp" />
 
    </LinearLayout>

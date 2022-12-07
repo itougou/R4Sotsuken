@@ -12,7 +12,7 @@ import com.example.r4sotuskenfragmentsample1025.entity.PlayerWithPosition;
 import java.util.List;
 
 //2022.12.6
-// Player（多）Position（多）の関連付けクラス
+// Player（多）Position（多）の関連付け情報のリポジトリ
 public class PlayerWithPositionRepository {
 
     private PlayerWithPositionDao mPlayerWithPositionDao;
@@ -34,13 +34,13 @@ public class PlayerWithPositionRepository {
 
     //2022.12.6
     public LiveData<PlayerWithPosition> serchPlayerPosition(String player_id) {
-        Log.d("★H_P_A_P Repository","serchPlayerPosition2()の中選手＋ポジション情報Listを返却");
+        Log.d("★P_W_P Repository","serchPlayerPosition()");
 
         return mPlayerWithPositionDao.serchPlayerPosition(player_id);
     }
     //2022.12.6
     public LiveData<List<PlayerWithPosition>> getAllPlayerPosition( ) {
-        Log.d("★H_P_A_P Repository","serchPlayerPosition2()の中選手＋ポジション情報Listを返却");
+        Log.d("★P_W_P Repository","getAllPlayerPosition()");
 
         return mPlayerWithPositionDao.getAll();
     }

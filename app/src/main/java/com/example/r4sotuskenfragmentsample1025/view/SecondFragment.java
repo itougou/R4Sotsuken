@@ -149,7 +149,7 @@ public class SecondFragment extends Fragment {
         binding.buttonPlayerAndPosition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-/*** 2022.12.6
+/*** 2022.12.6　PlayerPositionAndPosition（1対1）　から　PlayerWithPosition（多対多） を使う処理に変更
                 // Create the observer which updates the UI.
                 final Observer<List<PlayerPositionAndPosition>> searchObserver = new Observer<List<PlayerPositionAndPosition>>() {
                     @Override

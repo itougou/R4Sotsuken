@@ -1,5 +1,6 @@
 package com.example.r4sotuskenfragmentsample1025.adapter;
 
+import android.icu.text.Transliterator;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -8,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.r4sotuskenfragmentsample1025.databinding.PositionItemViewBinding;
 import com.example.r4sotuskenfragmentsample1025.entity.PlayerPositionAndPosition;
+import com.example.r4sotuskenfragmentsample1025.entity.Position;
+
 /*
  * 選手のポジション（守備位置）の情報ををRecyclerView（position_item_vew.xml）へ結び付ける為のクラス
  */
-public class PositionAdapter extends ListAdapter<PlayerPositionAndPosition, PositionAdapter.ViewHolder> {
+public class PositionAdapter extends ListAdapter<Position, PositionAdapter.ViewHolder> {
 
 //    public PositionAdapter(@NonNull DiffUtil.ItemCallback<HandlePositionAndPosition> diffCallback) {
 //        super(diffCallback);
@@ -19,7 +22,7 @@ public class PositionAdapter extends ListAdapter<PlayerPositionAndPosition, Posi
 
     PositionInterface positionInterface;
     public PositionAdapter(PositionInterface positionInterface) {
-        super(PlayerPositionAndPosition.itemCallback);
+        super(Position.itemCallback);
         this.positionInterface = positionInterface;
     }
 
@@ -38,8 +41,12 @@ public class PositionAdapter extends ListAdapter<PlayerPositionAndPosition, Posi
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        PlayerPositionAndPosition playerPositionAndPosition = getItem(position);  // 全セルデータからx番目のデータを取得
-        viewHolder.positionItemViewBinding.setPlayerPositionAndPosition( playerPositionAndPosition );
+        //2022.12.7
+        //PlayerPositionAndPosition playerPositionAndPosition = getItem(position);  // 全セルデータからx番目のデータを取得
+        Position mPosition = getItem(position);  // 全セルデータからx番目のデータを取得
+        //2022.12.7
+        // viewHolder.positionItemViewBinding.setPlayerPositionAndPosition( playerPositionAndPosition );
+        viewHolder.positionItemViewBinding.setPosition( mPosition );
         viewHolder.positionItemViewBinding.executePendingBindings();
 
 //        viewHolder.playerItemViewBinding.txtPlayer.setOnClickListener(new View.OnClickListener(){
@@ -60,6 +67,6 @@ public class PositionAdapter extends ListAdapter<PlayerPositionAndPosition, Posi
     }
 
     public interface PositionInterface {
-        void onItemClick(PlayerPositionAndPosition playerPositionAndPosition );
+        void onItemClick(Position position );
     }
 }

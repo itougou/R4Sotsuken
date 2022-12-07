@@ -12,7 +12,7 @@ import androidx.room.Relation;
 import java.util.List;
 
 /*
- * Player（多） と Position（多） の多対多 の関連づけ  のエンティティクラス
+ * PlayerPosition（多） と Position（多） の多対多 の関連づけ  のエンティティクラス
  */
 public class PlayerWithPosition {
     @Embedded
@@ -27,9 +27,7 @@ public class PlayerWithPosition {
     public String getPlayer_id() {
         return player.getPlayer_id();
     }
-//    //public String getPosition_id() {
-//        return playerPosition.getPosition_id();
-//    }
+
     public List<Position> getPositions() {
         return positions;
     }

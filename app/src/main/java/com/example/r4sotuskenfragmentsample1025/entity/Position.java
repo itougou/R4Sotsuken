@@ -1,6 +1,8 @@
 package com.example.r4sotuskenfragmentsample1025.entity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -44,4 +46,21 @@ public class Position {
     public void setJp_name(String jp_name) {
         this.jp_name = jp_name;
     }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return super.equals(obj);
+    }
+
+    public static DiffUtil.ItemCallback<Position> itemCallback = new DiffUtil.ItemCallback<Position>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Position oldItem, @NonNull Position newItem) {
+            return oldItem.getPosition_id().equals(newItem.getPosition_id()) &&
+                    oldItem.getPosition_id().equals(newItem.getPosition_id());
+        }
+        @Override
+        public boolean areContentsTheSame(@NonNull Position oldItem, @NonNull Position newItem) {
+            return oldItem.equals(newItem);
+        }
+    };
 }

@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import com.example.r4sotuskenfragmentsample1025.adapter.PositionAdapter;
 import com.example.r4sotuskenfragmentsample1025.databinding.FragmentFourthBinding;
 import com.example.r4sotuskenfragmentsample1025.entity.PlayerPositionAndPosition;
+import com.example.r4sotuskenfragmentsample1025.entity.PlayerWithPosition;
+import com.example.r4sotuskenfragmentsample1025.entity.Position;
 import com.example.r4sotuskenfragmentsample1025.viewmodel.BaseballViewModel;
 
 import java.util.List;
@@ -65,19 +67,23 @@ public class FourthFragment extends Fragment  implements PositionAdapter.Positio
         // 取り出す値（List<HandlePositionAndPosition>）が変化したときのコールバック処理（onChanged）登録
         String player_id = baseballViewModel.getPlayerAndTeam().getValue().player.getPlayer_id(); //クリックした行の選手IDを取り出す
         Log.i("★FourceFragment","player.getId()："+player_id);
+
+        /**　2022.12.7 下記の PlayerWithPosition を使って ポジション情報を表示する処理に変更
         baseballViewModel.getPlayerPositionAndPosition( player_id ).observe(getViewLifecycleOwner(), new Observer<List<PlayerPositionAndPosition>>() {
             @Override
             public void onChanged(List<PlayerPositionAndPosition> playerPositionAndPosition) {
                 Log.i("★FourceFragment","List<PlayerPositionAndPosition>："+playerPositionAndPosition);
-//仮の処理　とりあえずTextVewへ表示してみた
-//                for(HandlePositionAndPosition h : handlePositionAndPosition){
-//                    Log.i("★FourceFragment","ポジション情報："+h.getPosition_id() + " / "+h.getPlayer_id());
-//                    String posi_player = h.getPosition_id()+" / "+h.position.getName()+" / "+h.position.getJp_name();
-//                    String txtP = fragmentFourthBinding.txtViewPosition.getText().toString()+"\n";
-//                    fragmentFourthBinding.txtViewPosition.setText( txtP + posi_player );
-//                }
-                //変化後の結果をAdapterに渡し選手詳細画面のリサイクラーViewへ反映してもらう
+                //変化後の結果をAdapterに渡し、ポジション表示用のリサイクラーViewへ反映してもらう
                 adapter.submitList( playerPositionAndPosition );
+            }
+        });
+        **/
+        baseballViewModel.getPlayerWithPosition( player_id ).observe(getViewLifecycleOwner(), new Observer<PlayerWithPosition>() {
+            @Override
+            public void onChanged(PlayerWithPosition playerWithPosition) {
+                Log.i("★FourceFragment","List<PlayerWithPosition>："+playerWithPosition);
+                //変化後の結果をAdapterに渡し、ポジション表示用のリサイクラーViewへ反映してもらう
+                adapter.submitList( playerWithPosition.positions );
             }
         });
 
@@ -87,7 +93,7 @@ public class FourthFragment extends Fragment  implements PositionAdapter.Positio
     }
 
     @Override
-    public void onItemClick(PlayerPositionAndPosition palyerPositionAndPosition) {
+    public void onItemClick(Position position) {
 
     }
 }
